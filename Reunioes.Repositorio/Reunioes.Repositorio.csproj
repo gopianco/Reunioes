@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <Folder Include="Repositorios\" />
+        <Folder Include="Config\" />
+        <Folder Include="Contexto\" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Reunioes.Dominio\Reunioes.Dominio.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.2.0" />
+    </ItemGroup>
+</Project>
