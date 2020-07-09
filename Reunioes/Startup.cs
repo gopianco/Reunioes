@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Reunioes.Dominio.Contratos;
 using Reunioes.Repositorio.Contexto;
+using Reunioes.Repositorio.Repositorios;
 
 namespace Reunioes
 {
@@ -27,13 +29,15 @@ namespace Reunioes
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(option => option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             var connectionString = Configuration.GetConnectionString("MySqlConnection");
 
             services.AddDbContext<ReunioesContexto>(option => option.UseLazyLoadingProxies()
                                                         .UseMySql(connectionString,
                                                                               m => m.MigrationsAssembly("Reunioes.Repositorio")));
+
+            services.AddScoped<ISalaRepositorio, SalaRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

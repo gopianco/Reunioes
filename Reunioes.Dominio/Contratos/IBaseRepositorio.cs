@@ -6,7 +6,7 @@ namespace Reunioes.Dominio.Contratos
     public interface IBaseRepositorio<TEntity> : IDisposable where TEntity : class
     {
         void Adicionar(TEntity entity);
-        void ObterPorId(int id);
+        TEntity ObterPorId(int id);
         IEnumerable<TEntity> ObterTodos();
         void Atualizar(TEntity entity);
         void Remover(TEntity entity);
