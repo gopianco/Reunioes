@@ -38,6 +38,7 @@ namespace Reunioes
                                                                               m => m.MigrationsAssembly("Reunioes.Repositorio")));
 
             services.AddScoped<ISalaRepositorio, SalaRepositorio>();
+            services.AddScoped<IReuniaoRepositorio, ReuniaoRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
