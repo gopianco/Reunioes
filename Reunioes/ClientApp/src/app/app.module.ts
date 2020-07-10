@@ -9,7 +9,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { SalaComponentComponent } from './sala-component/sala-component.component';
+import { SalaComponent } from './sala/sala.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SalaComponentComponent } from './sala-component/sala-component.componen
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    SalaComponentComponent
+    SalaComponent,
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -27,7 +29,8 @@ import { SalaComponentComponent } from './sala-component/sala-component.componen
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'sala', component: SalaComponent },
+      
     ])
   ],
   providers: [],
