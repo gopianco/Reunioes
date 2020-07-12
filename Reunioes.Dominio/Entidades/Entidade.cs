@@ -22,9 +22,14 @@ namespace Reunioes.Dominio.Entidades
             mensagemValidacao.Add(msg);
         }
 
+        public string ObterMensagensDeValidacao()
+        {
+            return string.Join(". ", mensagemValidacao);
+        }
+
         public abstract void Validate();
 
-        protected bool EhValido
+        public bool EhValido
         {
             get { return !mensagemValidacao.Any(); }
         }

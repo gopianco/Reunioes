@@ -19,7 +19,7 @@ namespace Reunioes.Web.Controllers
 
         [HttpGet]
         public IActionResult Get()
-        
+
         {
             try
             {
@@ -34,10 +34,16 @@ namespace Reunioes.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Sala sala)
+        public IActionResult Post([FromBody] Sala sala)
         {
             try
             {
+                sala.Validate();
+                if (!sala.EhValido)
+                {
+                    return BadRequest(sala.ObterMensagensDeValidacao());
+                }
+
                 _salaRepositorio.Adicionar(sala);
                 return Created("api/sala", sala);
             }

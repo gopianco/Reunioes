@@ -4,7 +4,10 @@
 <label for="inputNome" class="sr-only">Nome da Sala</label>
 <input type="text" id="inputNome"
   class="form-control mb-2 col-md-4"
-  [ngClass] = ""
+  [ngClass] = "{
+    'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+    'is-valid': nome.valid && (nome.dirty || nome.touched)
+  }"
   name="inputNome"
   placeholder="Nome da Sala"
   [(ngModel)] = "sala.nome"
@@ -17,7 +20,7 @@
     </div>
   </div>
 
-<button class="btn btn-primary" (click)="cadastrar()">
+<button class="btn btn-primary" (click)="cadastrar()" [disabled]="ativarSpinner">
   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
   Cadastrar
 </button>
