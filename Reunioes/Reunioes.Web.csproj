@@ -14,6 +14,7 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Reunioes' ">
     <StartAction>Project</StartAction>
+    <ExternalConsole>true</ExternalConsole>
     <ApplicationURL>https://localhost:5001;http://localhost:5000</ApplicationURL>
   </PropertyGroup>
   <ItemGroup>
@@ -27,7 +28,6 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
-    <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 

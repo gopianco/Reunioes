@@ -9,19 +9,25 @@ import { Sala } from '../model/sala';
 })
 export class SalaComponent implements OnInit {
   sala: Sala;
+
+  public mensagem: string;
+  public salaCadastrada: boolean;
+
   constructor(private salaServico: SalaService) { }
 
   ngOnInit() {
+    this.sala = new Sala;
   }
 
   public cadastrar(){
     this.salaServico.cadastrar(this.sala)
       .subscribe(
         salaJson => {
-          console.log(salaJson);
+          this.salaCadastrada = true;
+          this.mensagem = "";
         },
         e => {
-          console.log(e.error);
+          this.mensagem = e.error;
         }
       );
   }

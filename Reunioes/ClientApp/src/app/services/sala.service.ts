@@ -26,7 +26,7 @@ export class SalaService implements OnInit{
 
   public cadastrar(sala: Sala): Observable<Sala> {
 
-    return this.http.post<Sala>(this._baseURL + '', JSON.stringify(sala), { headers: this.headers });
+    return this.http.post<Sala>(this._baseURL + 'api/sala', JSON.stringify(sala), { headers: this.headers });
   }
 
   public obterTodos(sala: Sala): Observable<Sala[]> {
