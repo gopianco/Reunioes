@@ -12,6 +12,7 @@ export class SalaComponent implements OnInit {
 
   public mensagem: string;
   public salaCadastrada: boolean;
+  public ativarSpinner: boolean;
 
   constructor(private salaServico: SalaService) { }
 
@@ -20,14 +21,17 @@ export class SalaComponent implements OnInit {
   }
 
   public cadastrar(){
+    this.ativarSpinner = true;
     this.salaServico.cadastrar(this.sala)
       .subscribe(
         salaJson => {
           this.salaCadastrada = true;
           this.mensagem = "";
+          this.ativarSpinner = false;
         },
         e => {
           this.mensagem = e.error;
+          this.ativarSpinner = false;
         }
       );
   }
