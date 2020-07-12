@@ -20,7 +20,8 @@ export class SalaComponent implements OnInit {
     this.sala = new Sala;
   }
 
-  public cadastrar(){
+  public cadastrar() {
+    this.mensagem = "";
     this.ativarSpinner = true;
     this.salaServico.cadastrar(this.sala)
       .subscribe(
