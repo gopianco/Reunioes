@@ -1,8 +1,29 @@
+
+<h1 class="h4"> Todas as Salas</h1>
+
 <p *ngIf="!salas">
   carregando...
 </p>
 
-<div *ngFor="let s of salas">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Sala</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of salas">
+      <td scope="row"></td>
+      <td>{{s.id}}</td>
+      <td>{{s.nome}}</td>
+      <td>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
 
-{{s.nome}}
-</div>
+      </td>
+    </tr>
+   
+  </tbody>
+</table>
+<div >
