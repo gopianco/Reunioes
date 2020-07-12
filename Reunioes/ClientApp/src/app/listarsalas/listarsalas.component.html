@@ -1,11 +1,11 @@
 
-<h1 class="h4"> Todas as Salas</h1>
+<h1 class="h4 mb-2 mt-2"> Todas as Salas</h1>
 
 <p *ngIf="!salas">
   carregando...
 </p>
 
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Numero</th>
@@ -19,6 +19,7 @@
       <td>{{s.nome}}</td>
       <td>
         <a>Editar</a>
+        <a>Deletar</a>
       </td>
     </tr>
    
