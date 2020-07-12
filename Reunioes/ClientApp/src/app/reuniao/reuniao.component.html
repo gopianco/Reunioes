@@ -1,3 +1,77 @@
-<p>
-  reuniao works!
-</p>
+<h1 class="h4 mt-3">Agendar Reunião</h1>
+
+
+<form>
+
+  <div class="row">
+
+    <div class="col">
+      <label for="inputTitulo" class="sr-only">Titulo</label>
+      <input type="text" name="inputTitulo" 
+      id="inputTitulo" placeholder="Título da reunião"
+      class="form-control mb-2"
+      [ngClass]="{
+        'is-invalid': titulo.invalid && (titulo.dirty || titulo.touched),
+        'is-valid': titulo.valid && (titulo.dirty || titulo.touched)
+      }"
+      [(ngModel)] = "reuniao.titulo"
+      #titulo="ngModel"
+      required
+      >
+    </div>
+
+    <div class="invalid-feedback mb-2" *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)">
+      <div *ngIf="titulo.errors.required">
+        Titulo é de preenchimento obrigatório
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    
+    <div class="col">
+      <label for="inputDataInicio">Data e Hora de Inicio: </label>
+      <input type="datetime-local" name="inputDataInicio" 
+      id="inputDataInicio" 
+      class="form-control"
+      [ngClass]="{
+        'is-invalid': dataInicio.invalid && (dataInicio.touched),
+        'is-valid': dataInicio.valid && (dataInicio.touched)
+      }"
+      [(ngModel)] = "reuniao.dataHoraInicio"
+      #dataInicio="ngModel"
+      required >
+    </div>
+
+    <div class="col">
+      <label for="inputDataFim">Data e Hora de Fim: </label>
+      <input type="datetime-local" name="inputDataFim" 
+      id="inputDataFim" 
+      class="form-control mb-2"
+      [ngClass]="{
+        'is-invalid': dataFim.invalid && (dataFim.touched),
+        'is-valid': dataFim.valid && (dataFim.touched)
+      }"
+      [(ngModel)] = "reuniao.dataHoraInicio"
+      #dataFim="ngModel"
+      required >
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <select class="custom-select"
+      ng-model="salas" ng-options="x.nome for x in salas"
+      >
+        
+      </select>
+    </div>
+
+  </div>
+
+
+</form>
+

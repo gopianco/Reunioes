@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SalaComponent } from './sala/sala.component';
 import { SalaService } from './services/sala.service';
+import { ReuniaoComponent } from './reuniao/reuniao.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { SalaService } from './services/sala.service';
     CounterComponent,
     FetchDataComponent,
     SalaComponent,
+    ReuniaoComponent,
     
   ],
   imports: [
@@ -32,6 +34,7 @@ import { SalaService } from './services/sala.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'sala', component: SalaComponent },
+      { path: 'reuniao', component: ReuniaoComponent },
       
     ])
   ],
