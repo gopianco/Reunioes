@@ -1,29 +1,37 @@
 
-<h1 class="h4 mt-3">Cadastro de Produto</h1>
+<h1 class="h4 mt-3">Cadastro de Sala</h1>
 
-<label for="inputNome" class="sr-only">Nome da Sala</label>
-<input type="text" id="inputNome"
-  class="form-control mb-2 col-md-4"
-  [ngClass] = "{
-    'is-invalid': nome.invalid && (nome.dirty || nome.touched),
-    'is-valid': nome.valid && (nome.dirty || nome.touched)
-  }"
-  name="inputNome"
-  placeholder="Nome da Sala"
-  [(ngModel)] = "sala.nome"
-  #nome= "ngModel"
-  required />
 
-  <div class="invalid-feedback mb-2" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
-    <div *ngIf="nome.errors.required">
-      Nome da Sala é de preenchimento obrigatório
+<form >
+  <div class="row">
+    <div class="col">
+      <label for="inputNome" class="sr-only">Nome da Sala</label>
+      <input type="text" id="inputNome"
+        class="form-control mb-2"
+        [ngClass] = "{
+          'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+          'is-valid': nome.valid && (nome.dirty || nome.touched)
+        }"
+        name="inputNome"
+        placeholder="Nome da Sala"
+        [(ngModel)] = "sala.nome"
+        #nome= "ngModel"
+        required />
+      
+        <div class="invalid-feedback mb-2" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+          <div *ngIf="nome.errors.required">
+            Nome da Sala é de preenchimento obrigatório
+          </div>
+        </div>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" (click)="cadastrar()" [disabled]="ativarSpinner">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
+        Cadastrar
+      </button>
     </div>
   </div>
-
-<button class="btn btn-primary" (click)="cadastrar()" [disabled]="ativarSpinner">
-  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
-  Cadastrar
-</button>
+</form>
 
 <div class="alert alert-danger mt-2" role="alert" *ngIf="mensagem">
   <h4 class="alert-heading"></h4>
@@ -34,4 +42,7 @@
   <h4 class="alert-heading"></h4>
   Sala cadastrada com sucesso!
 </div>
+
+
+<app-listarsalas></app-listarsalas>
 
