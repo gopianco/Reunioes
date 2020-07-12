@@ -29,7 +29,7 @@ export class SalaService implements OnInit{
     return this.http.post<Sala>(this._baseURL + 'api/sala', JSON.stringify(sala), { headers: this.headers });
   }
 
-  public obterTodos(sala: Sala): Observable<Sala[]> {
+  public obterTodos(): Observable<Sala[]> {
     return this.http.get<Sala[]>(this._baseURL + 'api/sala');
   }
 

@@ -23,7 +23,7 @@ namespace Reunioes.Web.Controllers
         {
             try
             {
-                return Ok(_salaRepositorio.ObterTodos());
+                return Json(_salaRepositorio.ObterTodos());
             }
             catch (Exception e)
             {
