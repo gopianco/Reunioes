@@ -54,5 +54,20 @@ namespace Reunioes.Web.Controllers
             }
         }
 
+        [HttpPost("Deletar")]
+        public IActionResult Deletar([FromBody] Sala sala)
+        {
+            try
+            {
+                _salaRepositorio.Remover(sala);
+                return Json(_salaRepositorio.ObterTodos());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.ToString());
+            }
+        }
+
     }
 }

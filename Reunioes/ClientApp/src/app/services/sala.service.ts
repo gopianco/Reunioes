@@ -33,5 +33,7 @@ export class SalaService implements OnInit{
     return this.http.get<Sala[]>(this._baseURL + 'api/sala');
   }
 
-
+  public deletar(sala: Sala): Observable<Sala[]> {
+    return this.http.post<Sala[]>(this._baseURL + 'api/sala/deletar', JSON.stringify(sala), { headers: this.headers });
+  }
 }

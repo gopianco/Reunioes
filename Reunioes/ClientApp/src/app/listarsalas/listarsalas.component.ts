@@ -24,9 +24,23 @@ export class ListarsalasComponent implements OnInit {
     );
 
   }
-
+ 
   ngOnInit() {
   }
 
+
+  public deletarSala(sala: Sala){
+    var retorno = confirm("Deseja realmente excluir a sala?");
+    if (retorno == true) {
+      this.salaService.deletar(sala).subscribe(
+        salas => {
+          this.salas = salas;
+        },
+        e => {
+          console.log(e.error);
+        }
+      );
+    }
+  }
 
 }
