@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SalaService } from '../services/sala.service';
+import { Sala } from '../model/sala';
 
 @Component({
   selector: 'app-sala',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sala.component.css']
 })
 export class SalaComponent implements OnInit {
-
-  constructor() { }
+  sala: Sala;
+  constructor(private salaServico: SalaService) { }
 
   ngOnInit() {
+  }
+
+  public cadastrar(){
+    this.salaServico.cadastrar(this.sala)
+      .subscribe(
+        salaJson => {
+          console.log(salaJson);
+        },
+        e => {
+          console.log(e.error);
+        }
+      );
   }
 
 }

@@ -7,7 +7,7 @@ import { StaticClassProvider } from '@angular/core/src/di/provider';
 @Injectable({
   providedIn: 'root'
 })
-export class ProdutoService implements OnInit{
+export class SalaService implements OnInit{
 
   private _baseURL: string;
   private salas: Sala[];

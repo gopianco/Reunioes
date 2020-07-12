@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SalaComponent } from './sala/sala.component';
+import { SalaService } from './services/sala.service';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { SalaComponent } from './sala/sala.component';
       
     ])
   ],
-  providers: [],
+  providers: [SalaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
