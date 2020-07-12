@@ -18,10 +18,6 @@ namespace Reunioes.Dominio.Entidades
         {
             LimparValidacao();
 
-            if (Id == 0)
-            {
-                AdicionarMensagem(" O ID da sala não pode ser nulo");
-            }
 
             if (string.IsNullOrEmpty(Nome))
             {
