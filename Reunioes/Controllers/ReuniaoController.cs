@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Reunioes.Dominio.Contratos;
 using Reunioes.Dominio.Entidades;
@@ -66,6 +69,8 @@ namespace Reunioes.Web.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+
+       
 
     }
 }

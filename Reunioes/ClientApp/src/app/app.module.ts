@@ -13,6 +13,7 @@ import { SalaComponent } from './sala/sala.component';
 import { SalaService } from './services/sala.service';
 import { ReuniaoService } from './services/reuniao.service';
 import { ReuniaoComponent } from './reuniao/reuniao.component';
+import { ListarReunioesComponent } from './listar-reunioes/listar-reunioes.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ReuniaoComponent } from './reuniao/reuniao.component';
     FetchDataComponent,
     SalaComponent,
     ReuniaoComponent,
+    ListarReunioesComponent,
     
   ],
   imports: [
@@ -36,6 +38,7 @@ import { ReuniaoComponent } from './reuniao/reuniao.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'sala', component: SalaComponent },
       { path: 'reuniao', component: ReuniaoComponent },
+      { path: 'listar-reunioes', component: ListarReunioesComponent },
       
     ])
   ],

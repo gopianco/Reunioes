@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Castle.Core.Internal;
+using Microsoft.AspNetCore.Mvc;
 using Reunioes.Dominio.Contratos;
 using Reunioes.Dominio.Entidades;
 using System;
@@ -65,6 +66,26 @@ namespace Reunioes.Web.Controllers
             catch (Exception ex)
             {
 
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpGet("Agendados")]
+        public IActionResult Agendados()
+        {
+            try
+            {
+
+                var todos = new List<Sala>();
+                todos = _salaRepositorio.ObterTodos()
+                                           .ToList();
+
+                var agendados = todos.Where(s => ! s.Reunioes.IsNullOrEmpty());
+
+                return Json(agendados);
+            }
+            catch (Exception ex)
+            {
                 return BadRequest(ex.ToString());
             }
         }
