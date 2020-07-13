@@ -53,7 +53,7 @@
         'is-invalid': dataFim.invalid && (dataFim.touched),
         'is-valid': dataFim.valid && (dataFim.touched)
       }"
-      [(ngModel)] = "reuniao.dataHoraInicio"
+      [(ngModel)] = "reuniao.dataHoraFim"
       #dataFim="ngModel"
       required >
     </div>
@@ -63,15 +63,38 @@
   <div class="row">
 
     <div class="col">
-      <select class="custom-select"
-      ng-model="salas" ng-options="x.nome for x in salas"
+      <select [(ngModel)]="reuniao.salaId" 
+      name="salaId"
+      class="form-control mb-2"
+      [ngClass]="{
+        'is-invalid': salaId.invalid && (salaId.touched),
+        'is-valid': salaId.valid && (salaId.touched)
+      }"
+      #salaId="ngModel"
+      required
       >
-        
+        <option *ngFor="let s of salas" value="{{s.id}}">{{s.nome}}</option>
       </select>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" (click)="criarReuniao()" [disabled]="ativarSpinner">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
+        Agendar
+      </button>
     </div>
 
   </div>
 
-
 </form>
+
+
+<div class="alert alert-danger mt-2" role="alert" *ngIf="mensagem">
+  <h4 class="alert-heading"></h4>
+  {{ mensagem }}
+</div>
+
+<div class="alert alert-success mt-2" role="alert" *ngIf="reuniaoCadastrada">
+  <h4 class="alert-heading"></h4>
+  Reunião com sucesso!
+</div>
 

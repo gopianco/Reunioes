@@ -33,13 +33,37 @@ namespace Reunioes.Web.Controllers
         {
             try
             {
+                var reuniaoExistente = _reuniaoRepositorio
+                    .ObterPorDataHora(reuniao.DataHoraInicio, reuniao.DataHoraFim, reuniao.SalaId);
+
+
+                reuniao.Validate();
+                if (!reuniao.EhValido)
+                {
+                    return BadRequest(reuniao.ObterMensagensDeValidacao());
+                }
+                if (reuniaoExistente != null)
+                {
+                    return BadRequest("Já existe uma reunião entre as datas: "
+                        + reuniaoExistente.DataHoraInicio.ToString("f")
+                        + " e "
+                        + reuniaoExistente.DataHoraFim.ToString("f")
+                        + " na sala desejada "
+                        + reuniaoExistente.Sala.Nome
+                        + "\n"
+                        + "Reuniao Conflitante: "
+                        + reuniaoExistente.Titulo
+                        );
+                }
+
+
                 _reuniaoRepositorio.Adicionar(reuniao);
                 return Created("api/reuniao", reuniao);
             }
             catch (Exception ex)
             {
 
-                return BadRequest(ex.Message);
+                return BadRequest(ex.ToString());
             }
         }
 

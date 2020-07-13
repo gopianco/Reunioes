@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SalaComponent } from './sala/sala.component';
 import { SalaService } from './services/sala.service';
+import { ReuniaoService } from './services/reuniao.service';
 import { ReuniaoComponent } from './reuniao/reuniao.component';
 
 
@@ -38,7 +39,7 @@ import { ReuniaoComponent } from './reuniao/reuniao.component';
       
     ])
   ],
-  providers: [SalaService],
+  providers: [SalaService, ReuniaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

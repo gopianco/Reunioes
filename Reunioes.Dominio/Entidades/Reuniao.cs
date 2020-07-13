@@ -29,12 +29,7 @@ namespace Reunioes.Dominio.Entidades
                 AdicionarMensagem("A reunião é muito curta");
             }
 
-            if (ReuniaoId == 0)
-            {
-                AdicionarMensagem("O ID de reuniao não pode ser nulo");
-            }
-
-
+           
         }
     }
 }
