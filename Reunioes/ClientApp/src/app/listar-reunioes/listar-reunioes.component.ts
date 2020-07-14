@@ -13,9 +13,9 @@ export class ListarReunioesComponent implements OnInit {
 
 
   public salasComReuniao : Sala[];
-  public reunioesDiponiveis : Sala[];
   public salas : Sala[];
   public mensagem: string;
+  public mensagemErro: string;
   public ativarSpinner: boolean;
   
   reuniao: Reuniao;
@@ -51,17 +51,17 @@ export class ListarReunioesComponent implements OnInit {
   
   consultarReuniao(){
     this.mensagem = "";
+    this.mensagemErro = "";
     this.ativarSpinner = true;
     this.reuniaoServico.consultarAgenda(this.reuniao).subscribe(
       r =>{
-        this.mensagem = "A sala" + r.salaId + " está disponivel para esta data";
+        this.mensagem = "A sala está disponivel para esta data";
         this.ativarSpinner = false;
       },
       e => {
         this.ativarSpinner = false;
-        this.mensagem = e.error;
-        console.log(e.error);
-        console.log(this.reuniao)
+        this.mensagemErro = e.error;
+        
       }
       )
   }

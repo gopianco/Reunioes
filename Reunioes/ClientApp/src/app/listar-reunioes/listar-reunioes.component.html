@@ -62,15 +62,22 @@
 
 </form>
 
-<div class="alert alert-danger mt-2" role="alert" *ngIf="mensagem">
+
+<div class="alert alert-danger mt-2 text-center" role="alert" *ngIf="mensagemErro">
   <h4 class="alert-heading"></h4>
-  {{ mensagem }}
+  {{ mensagemErro }} - Tente novamente!
+</div>
+
+<div class="alert alert-success mt-2 text-center" role="alert" *ngIf="mensagem">
+  <h4 class="alert-heading"></h4>
+  {{ mensagem }} - <a [routerLink]='["/reuniao"]'> Deseja agendar ? </a>
 </div>
 
 
 
 <h1 class="h4 mb-4 text-center">Consultar Reuniões agendadas</h1>
 
+<h1 class="text-center" *ngIf="!salasComReuniao"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></h1>
 
 <table class="table table-hover text-center" *ngFor="let sala of salasComReuniao" >
   <thead class="thead-light">
@@ -90,8 +97,8 @@
     <tr *ngFor="let reuniao of sala.reunioes">
         <th>{{reuniao.dataHoraInicio | date: 'dd/MM/yyyy'}}</th>
         <td> {{ reuniao.titulo }} </td>
-        <td>{{ reuniao.dataHoraInicio | date: 'dd/MM/yyyy hh:mm' }}</td>
-        <td>{{ reuniao.dataHoraFim | date: 'dd/MM/yyyy hh:mm' }}</td>
+        <td>{{ reuniao.dataHoraInicio | date: 'HH:mm' }}</td>
+        <td>{{ reuniao.dataHoraFim | date: 'HH:mm' }}</td>
     </tr>
   </tbody>
 </table>
