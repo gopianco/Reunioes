@@ -14,24 +14,56 @@ export class ListarReunioesComponent implements OnInit {
 
   public salasComReuniao : Sala[];
   public reunioesDiponiveis : Sala[];
-  public reunioes: {};
+  public salas : Sala[];
+  public mensagem: string;
+  public ativarSpinner: boolean;
+  
+  reuniao: Reuniao;
 
-  constructor(private salaServico: SalaService) {
+  constructor(private salaServico: SalaService,
+        private reuniaoServico: ReuniaoService) {
     
     this.salaServico.obterAgendados().subscribe(
       agendados =>{
         this.salasComReuniao = agendados;
-        console.log(this.salasComReuniao)
-        
       },
       e => {
         console.log(e.error);
       });
 
-   }
-   
-   ngOnInit() {
-   
+      this.salaServico.obterTodos().subscribe(
+        salas => {
+          this.salas = (salas);
+        },
+        e => {
+          console.log(e.error);
+        }
+      );
+
+      
+  }
+  
+  
+  ngOnInit() {
+    this.reuniao = new Reuniao;
+    this.reuniao.titulo = "teste";
+  }
+  
+  consultarReuniao(){
+    this.mensagem = "";
+    this.ativarSpinner = true;
+    this.reuniaoServico.consultarAgenda(this.reuniao).subscribe(
+      r =>{
+        this.mensagem = "A sala" + r.salaId + " está disponivel para esta data";
+        this.ativarSpinner = false;
+      },
+      e => {
+        this.ativarSpinner = false;
+        this.mensagem = e.error;
+        console.log(e.error);
+        console.log(this.reuniao)
+      }
+      )
   }
 
 }

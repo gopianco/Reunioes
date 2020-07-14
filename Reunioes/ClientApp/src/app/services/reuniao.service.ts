@@ -29,5 +29,11 @@ export class ReuniaoService implements OnInit{
     return this.http.post<Reuniao>(this._baseURL + 'api/reuniao', JSON.stringify(reuniao), { headers: this.headers });
   }
 
+  public consultarAgenda(reuniao: Reuniao): Observable<Reuniao>{
+    return this.http.post<Reuniao>(this._baseURL + 'api/reuniao/consultar', JSON.stringify(reuniao), { headers: this.headers });
+  }
+
+
+
   
 }

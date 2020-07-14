@@ -1,5 +1,75 @@
+<h1 class="h4 mb-4 text-center">Consultar Horários Livres</h1>
 
-<h1 class="h4 mb-4 text-center">Consultar Reuniões / Agendamento</h1>
+
+<form>
+
+  <div class="row">
+    
+    <div class="col">
+      <label for="inputDataInicio">Data e Hora de Inicio: </label>
+      <input type="datetime-local" name="inputDataInicio" 
+      id="inputDataInicio" 
+      class="form-control"
+      [ngClass]="{
+        'is-invalid': dataInicio.invalid && (dataInicio.touched),
+        'is-valid': dataInicio.valid && (dataInicio.touched)
+      }"
+      [(ngModel)] = "reuniao.dataHoraInicio"
+      #dataInicio="ngModel"
+      required >
+    </div>
+
+    <div class="col">
+      <label for="inputDataFim">Data e Hora de Fim: </label>
+      <input type="datetime-local" name="inputDataFim" 
+      id="inputDataFim" 
+      class="form-control mb-2"
+      [ngClass]="{
+        'is-invalid': dataFim.invalid && (dataFim.touched),
+        'is-valid': dataFim.valid && (dataFim.touched)
+      }"
+      [(ngModel)] = "reuniao.dataHoraFim"
+      #dataFim="ngModel"
+      required >
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <select [(ngModel)]="reuniao.salaId" 
+      name="salaId"
+      class="form-control mb-2"
+      [ngClass]="{
+        'is-invalid': salaId.invalid && (salaId.touched),
+        'is-valid': salaId.valid && (salaId.touched)
+      }"
+      #salaId="ngModel"
+      required
+      >
+        <option *ngFor="let s of salas" value="{{s.id}}">{{s.nome}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" (click)="consultarReuniao()" [disabled]="ativarSpinner">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
+        Consultar
+      </button>
+    </div>
+
+  </div>
+
+</form>
+
+<div class="alert alert-danger mt-2" role="alert" *ngIf="mensagem">
+  <h4 class="alert-heading"></h4>
+  {{ mensagem }}
+</div>
+
+
+
+<h1 class="h4 mb-4 text-center">Consultar Reuniões agendadas</h1>
 
 
 <table class="table table-hover text-center" *ngFor="let sala of salasComReuniao" >
@@ -17,7 +87,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let reuniao of sala.reunioes; index as i; odd as od">
+    <tr *ngFor="let reuniao of sala.reunioes">
         <th>{{reuniao.dataHoraInicio | date: 'dd/MM/yyyy'}}</th>
         <td> {{ reuniao.titulo }} </td>
         <td>{{ reuniao.dataHoraInicio | date: 'dd/MM/yyyy hh:mm' }}</td>
