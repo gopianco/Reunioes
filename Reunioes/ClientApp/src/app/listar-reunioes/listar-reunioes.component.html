@@ -26,14 +26,12 @@
   </thead>
   <tbody>
     <tr>
-      
-      <td *ngFor="let reuniao of sala.reunioes; index as i">
-        {{reuniao.titulo}} {{reuniao.dataHoraInicio | date:'dd/MM/yy hh:mm'}}
-      </td>
-    
+      <div *ngFor="let reuniao of sala.reunioes; index as i">
+        <th>{{reuniao.dataHoraInicio | date: 'dd/MM/yyyy'}}</th>
+        <td *ngIf="reuniao.dataHoraInicio[i] == reuniao.dataHoraInicio[i+1] "> {{ reuniao.titulo }} {{ reuniao.dataHoraInicio }} {{i}}</td>
+      </div>
     </tr>
   </tbody>
 </table>
-
 
 

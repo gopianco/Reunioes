@@ -27,14 +27,7 @@ namespace Reunioes.Repositorio.Repositorios
                 && dataFim < r.DataHoraFim
                 );
 
-            //return ReunioesContexto.Reunioes.FirstOrDefault(
-            //    r => datainicio >= r.DataHoraInicio 
-            //    && dataFim <= r.DataHoraInicio
-            //    && r.SalaId == id
-            //    || datainicio <= r. DataHoraInicio
-            //    && dataFim <= r.DataHoraFim
-            //    && r.SalaId == id
-            //    );
+            
         }
     }
 }

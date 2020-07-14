@@ -14,29 +14,24 @@ export class ListarReunioesComponent implements OnInit {
 
   public salasComReuniao : Sala[];
   public reunioesDiponiveis : Sala[];
-
-  
-
+  public reunioes: {};
 
   constructor(private salaServico: SalaService) {
     
     this.salaServico.obterAgendados().subscribe(
       agendados =>{
         this.salasComReuniao = agendados;
-        console.log(agendados)
+        //console.log(this.salasComReuniao)
         
       },
       e => {
         console.log(e.error);
-      }
-    )
+      });
 
-  
    }
    
    ngOnInit() {
+   
   }
-  
- 
 
 }
