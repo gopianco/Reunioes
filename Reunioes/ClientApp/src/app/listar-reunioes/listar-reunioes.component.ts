@@ -21,7 +21,7 @@ export class ListarReunioesComponent implements OnInit {
     this.salaServico.obterAgendados().subscribe(
       agendados =>{
         this.salasComReuniao = agendados;
-        //console.log(this.salasComReuniao)
+        console.log(this.salasComReuniao)
         
       },
       e => {
