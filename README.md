@@ -13,7 +13,7 @@ Esste sistema foi construido com:
  Para Rodar o projeto siga as instruções:
  
  - Faça donwload do .net 2.2.0 <a href="https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-2.2.100-windows-x64-binaries">aqui<a>
- - Faça a instalação do MySql - seguindo as configurações que se encontrar em config.json ("Server=127.0.0.1;Uid=root;Pwd=123qweR@;database=test")
+ - Faça a instalação do MySql - seguindo as configurações que se encontram em config.json ("Server=127.0.0.1;Uid=root;Pwd=123qweR@;database=test")
  - Faça donwload e instalação do Angular 6
  - Abra o Projeto com o Visual Studio
  - Abra o Console de Gerenciamento de Pacotes e rode os seguintes comandos:
