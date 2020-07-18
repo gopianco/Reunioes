@@ -17,14 +17,14 @@ namespace Reunioes.Repositorio.Repositorios
 
 
             return ReunioesContexto.Reunioes.FirstOrDefault(
-                r => datainicio > r.DataHoraInicio
-                && dataFim < r.DataHoraFim
+                r => datainicio >= r.DataHoraInicio
+                && dataFim <= r.DataHoraFim
                 ||
-                datainicio > r.DataHoraInicio
-                && datainicio < r.DataHoraFim
+                datainicio >= r.DataHoraInicio
+                && datainicio <= r.DataHoraFim
                 ||
-                dataFim > r.DataHoraInicio
-                && dataFim < r.DataHoraFim
+                dataFim >= r.DataHoraInicio
+                && dataFim <= r.DataHoraFim
                 );
 
             
